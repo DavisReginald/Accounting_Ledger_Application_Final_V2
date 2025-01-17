@@ -41,11 +41,21 @@ class Transaction {
 }
 
 public class Main {
+
     public static double totalBalance = 0.0;
     public static Scanner myscanner = new Scanner(System.in);
     public static ArrayList<Transaction> transactions = new ArrayList<>(); // Store transactions
 
     public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String correctPassword = "123";
+        String userInputPassword;
+        do {
+            System.out.print("Enter your password: ");
+            userInputPassword = scanner.nextLine();
+        } while (!userInputPassword.equals(correctPassword));
+        System.out.println("Access granted. Welcome!");
+
         loadTransactionsFromFile(); // Load saved transactions on startup
         displayMenu(); // Show the main menu
     }
