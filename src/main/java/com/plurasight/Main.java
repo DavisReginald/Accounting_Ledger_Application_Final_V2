@@ -52,7 +52,7 @@ public class Main {
                         // Display Menu //
     public static void displayMenu() throws IOException {
         while (true) {
-            System.out.println("Welcome to Chase banking, how can I help you today?");
+            System.out.println("Welcome, how can I help you today?");
             System.out.println("D) Make Deposit \nP) Make Payment \nL) Ledger \nR) Reports \nX) Exit");
             String option = myscanner.nextLine();
 
@@ -188,22 +188,44 @@ public class Main {
     // Stub reports for date-based reports (implementation can be expanded based on LocalDate)
     public static void displayMonthToDate() {
         System.out.println("Displaying Month To Date transactions...");
-        // Add logic for filtering based on current month
+        for (Transaction transaction : transactions){
+            if (transaction.getDate().getYear() == LocalDate.now().getYear()){
+                if (transaction.getDate().getMonth() == LocalDate.now().getMonth()){
+                    System.out.println(transaction);
+                }
+            }
+
+        }
     }
 
     public static void displayPreviousMonth() {
         System.out.println("Displaying Previous Month transactions...");
-        // Add logic for filtering based on previous month
+        for (Transaction transaction : transactions){
+            if (transaction.getDate().getYear() == LocalDate.now().minusMonths(1).getYear() ){
+                if (transaction.getDate().getMonth() == LocalDate.now().minusMonths(1).getMonth()){
+                    System.out.println(transaction);
+                }
+            }
+
+        }
     }
 
     public static void displayYearToDate() {
         System.out.println("Displaying Year To Date transactions...");
-        // Add logic for filtering based on current year
+        for (Transaction transaction : transactions){
+            if (transaction.getDate().getYear() == LocalDate.now().getYear()){
+                System.out.println(transaction);
+            }
+        }
     }
 
     public static void displayPreviousYear() {
         System.out.println("Displaying Previous Year transactions...");
-        // Add logic for filtering based on previous year
+        for (Transaction transaction : transactions){
+            if (transaction.getDate().getYear() == LocalDate.now().minusYears(1).getYear()){
+                System.out.println(transaction);
+            }
+        }
     }
 
     // Saving Transactions to a File
